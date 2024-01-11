@@ -16,6 +16,12 @@ function App() {
       <Grid container spacing={2}>
         <Grid item lg={5} xs={12}>
           <TodoAdd onNewTodo={handleNewTodo} />
+          <Typography variant="body1">
+            Total de tareas: {todosCount}
+          </Typography>
+          <Typography variant="body1">
+            Tareas pendientes: {pendingTodosCount}
+          </Typography>
         </Grid>
 
         <Grid item lg={7} xs={12}>
