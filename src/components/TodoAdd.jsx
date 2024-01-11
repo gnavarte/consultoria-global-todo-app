@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from '../hooks/useForm';
+import { TextField, Button, Grid, Paper } from '@mui/material';
 
 export const TodoAdd = ({ onNewTodo }) => {
   const { description, onInputChange, onResetForm } = useForm({
@@ -21,19 +22,26 @@ export const TodoAdd = ({ onNewTodo }) => {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <input
-        type="text"
-        placeholder="¿Qué hay que hacer?"
-        className="form-control"
-        name="description"
-        value={description}
-        onChange={onInputChange}
-      />
-
-      <button type="submit" className="btn btn-outline-primary mt-1">
-        Agregar
-      </button>
-    </form>
+    <Paper elevation={3} style={{ padding: 20 }}>
+      <form onSubmit={onFormSubmit}>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item xs={8}>
+            <TextField
+              fullWidth
+              variant="outlined"
+              label="¿Qué hay que hacer?"
+              name="description"
+              value={description}
+              onChange={onInputChange}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <Button type="submit" variant="outlined" color="primary" style={{ marginTop: 8 }}>
+              Agregar
+            </Button>
+          </Grid>
+        </Grid>
+      </form>
+    </Paper>
   );
 };

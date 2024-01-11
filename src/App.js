@@ -2,32 +2,36 @@ import React from 'react';
 import './App.css';
 import { useTodos } from './hooks/useTodos';
 import { TodoAdd, TodoList } from './components';
+import { Typography, Grid, Paper } from '@mui/material';
 
 function App() {
   const { todos, todosCount, pendingTodosCount, handleDeleteTodo, handleToggleTodo, handleNewTodo } = useTodos();
 
   return (
     <>
-      <h1>
-        TodoApp: {todosCount}, <small>pendientes: {pendingTodosCount}</small>
-      </h1>
-      <hr />
+      <Typography variant="h6">
+        Hay {todosCount} tareas, de las cuales {pendingTodosCount} están pendientes.
+      </Typography>
 
-      <div className="row">
-        <div className="col-7">
-          <TodoList
-            todos={todos}
-            onDeleteTodo={handleDeleteTodo}
-            onToggleTodo={handleToggleTodo}
-          />
-        </div>
+      <Grid container spacing={2}>
+        <Grid item xs={7}>
+          <Paper>
+            <TodoList
+              todos={todos}
+              onDeleteTodo={handleDeleteTodo}
+              onToggleTodo={handleToggleTodo}
+            />
+          </Paper>
+        </Grid>
 
-        <div className="col-5">
-          <h4>Agregar TODO</h4>
-          <hr />
-          <TodoAdd onNewTodo={handleNewTodo} />
-        </div>
-      </div>
+        <Grid item xs={5}>
+          <Paper>
+            <Typography variant="h6">Agregar TODO</Typography>
+            <hr />
+            <TodoAdd onNewTodo={handleNewTodo} />
+          </Paper>
+        </Grid>
+      </Grid>
     </>
   );
 }

@@ -1,9 +1,10 @@
 import React from "react";
+import { List } from "@mui/material";
 import { TodoItem } from "./TodoItem";
 
 export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo }) => {
   return (
-    <ul className="list-group">
+    <List>
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
@@ -12,6 +13,6 @@ export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo }) => {
           onToggleTodo={onToggleTodo}
         />
       ))}
-    </ul>
+    </List>
   );
 };
