@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Typography variant="h6">
-        Consultoría Global Todo App
+        Lista de tareas
       </Typography>
 
       <Grid container spacing={2}>
