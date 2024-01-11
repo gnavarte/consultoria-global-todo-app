@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { useTodos } from './hooks/useTodos';
+import { TodoAdd, TodoList } from './components';
 
 function App() {
+  const { todos, todosCount, pendingTodosCount, handleDeleteTodo, handleToggleTodo, handleNewTodo } = useTodos();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>
+        TodoApp: {todosCount}, <small>pendientes: {pendingTodosCount}</small>
+      </h1>
+      <hr />
+
+      <div className="row">
+        <div className="col-7">
+          <TodoList
+            todos={todos}
+            onDeleteTodo={handleDeleteTodo}
+            onToggleTodo={handleToggleTodo}
+          />
+        </div>
+
+        <div className="col-5">
+          <h4>Agregar TODO</h4>
+          <hr />
+          <TodoAdd onNewTodo={handleNewTodo} />
+        </div>
+      </div>
+    </>
   );
 }
 
