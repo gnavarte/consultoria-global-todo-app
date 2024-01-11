@@ -10,25 +10,21 @@ function App() {
   return (
     <>
       <Typography variant="h6">
-        Hay {todosCount} tareas, de las cuales {pendingTodosCount} están pendientes.
+        Consultoría Global Todo App
       </Typography>
 
       <Grid container spacing={2}>
-        <Grid item xs={7}>
-          <Paper>
+        <Grid item lg={5} xs={12}>
+          <TodoAdd onNewTodo={handleNewTodo} />
+        </Grid>
+
+        <Grid item lg={7} xs={12}>
+          <Paper elevation={3}>
             <TodoList
               todos={todos}
               onDeleteTodo={handleDeleteTodo}
               onToggleTodo={handleToggleTodo}
             />
-          </Paper>
-        </Grid>
-
-        <Grid item xs={5}>
-          <Paper>
-            <Typography variant="h6">Agregar TODO</Typography>
-            <hr />
-            <TodoAdd onNewTodo={handleNewTodo} />
           </Paper>
         </Grid>
       </Grid>
