@@ -9,7 +9,7 @@ export const TodoAdd = ({ onNewTodo }) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    if (description.length <= 1) return;
+    if (description.trim().length <= 1) return;
 
     const newTodo = {
       id: new Date().getTime(),
@@ -23,8 +23,8 @@ export const TodoAdd = ({ onNewTodo }) => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      <Grid container spacing={2} alignItems="center">
-        <Grid item xs={8}>
+      <Grid container spacing={2} direction={'column'}>
+        <Grid item>
           <TextField
             fullWidth
             variant="outlined"
@@ -34,8 +34,8 @@ export const TodoAdd = ({ onNewTodo }) => {
             onChange={onInputChange}
           />
         </Grid>
-        <Grid item xs={4}>
-          <Button type="submit" variant="outlined" color="primary" style={{ marginTop: 8 }}>
+        <Grid item>
+          <Button type="submit" variant="contained" color="primary" fullWidth>
             Agregar
           </Button>
         </Grid>
